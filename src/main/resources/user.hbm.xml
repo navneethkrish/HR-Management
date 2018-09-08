@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ideas2it.application.model">
+    <class name = "User" table = "User">
+        <meta attribute = "class-description">
+            This class contains the client detail. 
+        </meta>
+        <id name = "id" type = "int">
+            <column name="USERID" default ="0" />   
+            <generator class="increment"/>
+        </id>
+        <property name = "emailId" column = "EMAILID" type = "string" unique = "true"/>
+        <property name = "password" column = "PASSWORD" type = "string"/>
+        <property name = "privileges" column = "PRIVILEGES" type = "string"/>
+    </class>
+</hibernate-mapping>
+

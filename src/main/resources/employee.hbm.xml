@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ideas2it.application.model">
+   <class name = "Employee" table = "Employee">
+      <meta attribute = "class-description">
+          This class contains the employee detail. 
+      </meta>
+      <id name = "id" type = "int">
+          <column name="EMPID" default= "0" />
+         <generator class="increment"/>
+      </id>
+      <property name = "name" column = "NAME" type = "string"/>
+      <property name = "emailId" column = "EMAILID" type = "string"/>
+      <property name = "phoneNo" column = "PHONENO" type = "long"/>
+      <property name = "salary" column = "SALARY" type = "double"/>
+      <property name = "DOB" column = "DOB" type = "date"/>
+      <property name = "dateOfJoining" column = "DOJ" type = "date"/>
+      <property name = "rating" column = "RATING" type = "int"/> 
+      <property name = "designation" column = "DESIGNATION" type = "string"/> 
+      <property name = "status" column = "STATUS" type = "int"/>
+      <set name="projects" table="projectmanagement" fetch ="join"  
+                                                 cascade="all" lazy="true">
+			<key column="EMPID"/>
+			<many-to-many class="Project" column="PROID" />
+	  </set> 
+      <bag name="addresses" cascade ="all" fetch="select" lazy ="false">
+            <key column="EMPID" />
+            <one-to-many class="Address"/>
+      </bag>   
+    
+   </class>
+</hibernate-mapping>
+

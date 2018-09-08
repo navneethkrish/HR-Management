@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ideas2it.application.model">
+    <class name = "Address" table = "address">
+        <meta attribute = "class-description">
+            This class contains the address details of client and employee. 
+        </meta>
+        <id name = "id" type = "int">
+            <column name="ADDRESSID" default ="0" />   
+            <generator class="increment"/>
+        </id>
+        <property name = "addressLineOne" column = "ADDRESSLINEONE" type = "string"/>
+        <property name = "addressLineTwo" column = "ADDRESSLINETWO" type = "string"/>
+        <property name = "city" column = "CITY" type = "string"/>
+        <property name = "status" column = "STATUS" type = "int"/>
+        <property name = "type" column = "TYPE" type = "string"/> 
+        <property name = "employeeId" column = "EMPID" type = "int"/>
+        <property name = "clientId" column ="CLIENTID" type = "int"/>
+        </class>
+</hibernate-mapping>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+  
+    <bean id="EmployeeDao" class="com.ideas2it.application.dao.impl.EmployeeDaoImpl">
+    </bean>
+
+    <bean id="EmployeeService" class="com.ideas2it.application.service.impl.EmployeeServiceImpl">
+        <property name="employeeDao" ref="EmployeeDao"></property> 
+    </bean>
+
+	<bean id="EmployeeController" class="com.ideas2it.application.controller.EmployeeController">
+		<property name="employeeService" ref="EmployeeService"></property>
+	</bean>
+   
+    <bean id="ProjectDao" class="com.ideas2it.application.dao.impl.ProjectDaoImpl">
+    </bean>
+
+    <bean id="ProjectService" class="com.ideas2it.application.service.impl.ProjectServiceImpl">
+        <property name="projectDao" ref="ProjectDao"></property> 
+        <property name="employeeService" ref="EmployeeService"></property>
+    </bean>
+
+	<bean id="ProjectController" class="com.ideas2it.application.controller.ProjectController">
+		<property name="projectService" ref="ProjectService"></property>
+	</bean>
+
+
+     <bean id="ClientDao" class="com.ideas2it.application.dao.impl.ClientDaoImpl">
+    </bean>
+
+    <bean id="ClientService" class="com.ideas2it.application.service.impl.ClientServiceImpl">
+        <property name="clientDao" ref="ClientDao"></property>
+        <property name="projectService" ref="ProjectService"></property> 
+    </bean>
+
+	<bean id="ClientController" class="com.ideas2it.application.controller.ClientController">
+		<property name="clientService" ref="ClientService"></property>
+	</bean>
+
+    <context:component-scan base-package="com.ideas2it.application.controller.EmployeeController"/>
+    <context:component-scan base-package="com.ideas2it.application.controller.ProjectController"/>
+    <context:component-scan base-package="com.ideas2it.application.controller.ClientController"/>
+</beans>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.ideas2it.application.model">
+   <class name = "ProjectManagement" table = "projectmanagement">
+      <meta attribute = "class-description">
+          This class contains the ProjectManagement details. 
+      </meta>
+      <composite-id>
+      <key-property name = "empId" column = "EMPID"/>
+      <key-property name = "proId" column = "PROID"/>
+      </composite-id>
+      </class>
+</hibernate-mapping>
+
